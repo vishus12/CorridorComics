@@ -1,14 +1,14 @@
 import React, {useState} from "react"
 import { ApplicationViews } from "./ApplicationViews"
 import { NavBar } from "./nav/NavBar"
-import "./Nutshell.css"
+import "./CorridorComics.css"
 
-export const Nutshell = () => {
-  const [isAuthenticated, setIsAuthenticated] = useState(sessionStorage.getItem("nutshell_user") !== null)
+export const CorridorComics = () => {
+  const [isAuthenticated, setIsAuthenticated] = useState(sessionStorage.getItem("corridorcomics_user") !== null)
 
     const setAuthUser = (user) => {
-        sessionStorage.setItem("nutshell_user", JSON.stringify(user))
-        setIsAuthenticated(sessionStorage.getItem("nutshell_user") !== null)
+        sessionStorage.setItem("corridorcomics_user", JSON.stringify(user))
+        setIsAuthenticated(sessionStorage.getItem("corridorcomics_user") !== null)
     }
     
     const clearUser = () => {
