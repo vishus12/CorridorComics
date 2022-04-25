@@ -13,7 +13,7 @@ export const NavBar = (clearUser) => {
           <Link className={`navbar__link`} to="/favorites">  Favorites </Link>
         </li>
         <li className="navBar_item item_left">
-        {sessionStorage.getItem("nutshell_user") != null ? <Link className="navbar__link" to="/login" onClick={clearUser}> Logout </Link> : ''}
+        {sessionStorage.getItem("corridorcomics_user") != null ? <Link className="navbar__link" to="/login" onClick={clearUser}> Logout </Link> : ''}
         </li>
       </ul>
     </nav>
