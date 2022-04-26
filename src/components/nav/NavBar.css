@@ -6,7 +6,7 @@
     padding: 1em;
     transition: color .5s;
     font-weight: bold;
-    background-color: blueviolet;
+    background-color: black;
 }
 
 
@@ -24,12 +24,12 @@
 
 .navbar__link{
     text-decoration: none;
-    color: black;
+    color: grey;
     transition: color 1s, scale 1s;
 }
 
 .navbar__link:visited{
-    color: black;
+    color: grey;
 }
 
 .navBar_item a:hover{

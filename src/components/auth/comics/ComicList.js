@@ -3,7 +3,7 @@ import { ComicCard } from './ComicCard'
 import { getComics } from '../modules/ComicManager.js'
 import { useNavigate } from 'react-router-dom'
 
-export const ComicListComponent = () => {
+export const ComicListComponent = ({getLoggedInUser}) => {
     const [comics, setComics] = useState([])
     // const navigate = useNavigate();
 
@@ -19,14 +19,14 @@ export const ComicListComponent = () => {
         getAllComics()
     }, [])
     
-    
-    console.log(comics)
+
     return (
         <>
             <div className="container-cards">
                 {comics.map(i => <ComicCard
                     key={i.id}
                     comic={i}
+                    getLoggedInUser={getLoggedInUser}
                    />)}
             </div>
         </>
