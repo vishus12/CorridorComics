@@ -28,7 +28,7 @@ export const Login = ({setAuthUser}) => {
 			if (exists) {
 		
 				setAuthUser(exists)
-				navigate("/Home");
+				navigate("/");
 			} else {
 				setExistDialog(true);
 			}
