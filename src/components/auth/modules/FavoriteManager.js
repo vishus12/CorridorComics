@@ -1,22 +1,19 @@
-const remoteUrl = "http://localhost:8080"
+const remoteUrl = "http://localhost:8088"
 
-export const getFavoriteComics = () => {
-    return fetch(`${remoteUrl}/favorites`)
-        .then(parseResponse => parseResponse.json())
-}
-
-export const getFavoriteComicsById = (id) => {
-    return fetch(`${remoteUrl}/favorites/${id}`)
-        .then(parseResponse => parseResponse.json())
-}
-
-export const updateFavoriteComics = (editedComic) => {
-    return fetch(`${remoteUrl}/favorites/${editedComic.id}`, {
-        method: 'PATCH',
+export const addFavoriteComics = (faveComic) => {
+    return fetch(`${remoteUrl}/favorites`, {
+        method: 'POST',
         headers: {
             "Content-Type": "application/json"
         },
-        body: JSON.stringify(editedComic)
-    }).then(parseResponse => parseResponse.json())
+        body: JSON.stringify(faveComic)
+    }).then(parseResponse => parseResponse.json())   
+        
 }
+
+export const getFavoriteComic= () => {
+    return fetch(`${remoteUrl}/favorites?_expand=comic`)
+        .then(parseResponse => parseResponse.json())
+}
+
 

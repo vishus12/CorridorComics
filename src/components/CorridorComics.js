@@ -13,7 +13,12 @@ export const CorridorComics = () => {
     
     const clearUser = () => {
         sessionStorage.clear();
-        setIsAuthenticated(sessionStorage.getItem("kennel_customer") !== null)
+        setIsAuthenticated(sessionStorage.getItem("corridorcomics_user") !== null)
+      }
+
+      const getLoggedInUser = () => {
+        const thisUserId = sessionStorage.getItem("corridorcomics_user")
+        return thisUserId;
       }
     
 return (
@@ -21,6 +26,7 @@ return (
   <NavBar clearUser={clearUser} isAuthenticated={isAuthenticated}/>
   <ApplicationViews setAuthUser={setAuthUser}
                 isAuthenticated={isAuthenticated}
-                setIsAuthenticated={setIsAuthenticated}/>
+                setIsAuthenticated={setIsAuthenticated}
+                getLoggedInUser={getLoggedInUser}/>
   </>
 )}
