@@ -16,4 +16,24 @@ export const getFavoriteComic= () => {
         .then(parseResponse => parseResponse.json())
 }
 
+export const deleteFavoriteComic= (favoritesId) => {
+    return fetch(`${remoteUrl}/favorites/${favoritesId}`, {
+        method: 'DELETE'
+    }).then(parseResponse => parseResponse.json())
+}
 
+export const updateFavoriteComic= (favoritesId) => {
+    return fetch(`${remoteUrl}/favorites/${favoritesId}`, {
+        method: "PATCH",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(favoritesId)
+    }).then(parseResponse => parseResponse.json())
+}
+
+export const getFavoriteComicsById = (favoritesId) =>{
+    return fetch(`${remoteUrl}/favorites/${favoritesId}`,{
+        
+    }).then(parseResponse => parseResponse.json())
+}

@@ -1,13 +1,37 @@
 body {
+  background-image: url(../public/images/669.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.fieldset_email{
+  background-color: whitesmoke;
+}
+
+.fieldset_signin{
+  background-color: whitesmoke;
+}
+
+.link_register{
+  color: white;
+}
+
+.Title{
+  color: white;
+}
+
+.Log{
+  color: white;
 }
