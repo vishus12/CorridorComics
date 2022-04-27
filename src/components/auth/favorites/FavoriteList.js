@@ -1,11 +1,18 @@
 import React, { useState, useEffect } from 'react'
 import { FavoritesCard } from './FavoriteCard'
-import { getFavoriteComic } from '../modules/FavoriteManager' 
+import { useNavigate } from 'react-router-dom';
+import { getFavoriteComic, deleteFavoriteComic } from '../modules/FavoriteManager' 
 
 
 export const FavoriteComicListComponent = ({getLoggedInUser}) => {
     const [favoriteComics, setFavoriteComics] = useState([])
-    // const navigate = useNavigate();
+    const navigate = useNavigate();
+
+    const handleDeleteFavoriteComic = (id) => {
+        deleteFavoriteComic(id)
+        .then(() => getFavoriteComic().then(setFavoriteComics))
+    }
+
 
     const getAllFavoriteComics = () => {
         getFavoriteComic()
@@ -27,6 +34,7 @@ export const FavoriteComicListComponent = ({getLoggedInUser}) => {
                     key={favoriteComics.id}
                     comic={favoriteComics}
                     getLoggedInUser={getLoggedInUser}
+                    handleDeleteFavoriteComic={handleDeleteFavoriteComic}
                    />)}
             </div>
         </>

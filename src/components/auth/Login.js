@@ -47,9 +47,9 @@ export const Login = ({setAuthUser}) => {
 			</dialog>
 			<section>
 				<form className="form--login" onSubmit={handleLogin}>
-					<h1>Corridor Comics</h1>
-					<h2>Sign In</h2>
-					<fieldset>
+					<h1 className="Title">Corridor Comics</h1>
+					<h2 className="Log">Sign In</h2>
+					<fieldset className='fieldset_email'>
 						<label htmlFor="inputEmail"> Email Address: </label>
 						<input
 							type="email"
@@ -62,12 +62,12 @@ export const Login = ({setAuthUser}) => {
 							onChange={handleInputChange}
 						/>
 					</fieldset>
-					<fieldset>
-						<button type="submit">Sign in</button>
+					<fieldset className='fieldset_signin'>
+						<button type="submit" className="signbtn">Sign in</button>
 					</fieldset>
 				</form>
 			</section>
-			<section className="link--register">
+			<section className="link_register">
 				<Link to="/register">Register for an account</Link>
 			</section>
 		</main>
