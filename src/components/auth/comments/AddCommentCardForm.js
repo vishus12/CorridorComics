@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { updateFavoriteComic } from '../modules/FavoriteManager';
+import { useNavigate, useParams } from 'react-router-dom';
+import { updateFavoriteComic, getFavoriteComicsById  } from '../modules/FavoriteManager';
 
-export const CommentCard = ({ getLoggedInUser }) => {
+export const AddCommentToPageCard = ({ getLoggedInUser }) => {
     const [comics, setComics] = useState({})
+    const {favoriteId} = useParams()
     const navigate = useNavigate();
-    const user = getLoggedInUser();
 
     const controlInput = (event) => {
         const newComics = { ...comics }
@@ -17,15 +17,18 @@ export const CommentCard = ({ getLoggedInUser }) => {
         if (event.target.id.includes('Id')) {
             selectedTarget = parseInt(selectedTarget)
         }
-        newTask[event.target.id] = selectedTarget
+        newComics[event.target.id] = selectedTarget
         setComics(newComics)
+    
     }
     useEffect(() => {
+        getFavoriteComicsById(favoriteId)
+        .then(fav => setComics(fav)) 
 
     }, [])
     const saveComics = (event) => {
         event.preventDefault()
-        updateFavoriteComic()
+        updateFavoriteComic(comics)
             .then(() => navigate('/Favorites'))
     }
 
@@ -37,7 +40,7 @@ export const CommentCard = ({ getLoggedInUser }) => {
                 </h2>
                 <fieldset>
                     <label htmlFor="name">Comment</label>
-                    <input type="text" id="name" onChange={controlInput} required autoFocus className="controlled_form comment_controlled_form" placeholder="comment discription" value={favorites.comment} />
+                    <input type="text" id="comments" onChange={controlInput} required autoFocus className="controlled_form comment_controlled_form" placeholder="comment description" value={comics.comment} />
                 </fieldset>
                 <button type="button" id="comment_submit_btn" className="submit_btn" onClick={saveComics}>Submit</button>
             </form>

@@ -26,7 +26,7 @@ export const Login = ({setAuthUser}) => {
 		existingUserCheck().then((exists) => {
 			if (exists) {
 		
-				setAuthUser(exists)
+				setAuthUser(exists.id)
 				navigate("/");
 			} else {
 				setExistDialog(true);

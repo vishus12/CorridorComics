@@ -17,8 +17,8 @@ export const CorridorComics = () => {
       }
 
       const getLoggedInUser = () => {
-        const thisUserId = sessionStorage.getItem("corridorcomics_user")
-        return thisUserId;
+        const thisUser = parseInt(sessionStorage.getItem("corridorcomics_user"))
+        return thisUser;
       }
     
 return (
