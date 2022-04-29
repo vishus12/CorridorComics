@@ -1,29 +1,54 @@
-export const FavoritesCard = ({comic, handleDeleteFavoriteComic}) => {
+import React, { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
+
+
+
+export const FavoritesCard = ({ favoriteComic, handleDeleteFavoriteComic }) => {
+    const navigate = useNavigate();
+
+ const handleDeleteComment = () =>{
+     
+
+ }   
     return (
 
         <div className="comic_container">
-            <img className="comic_image" src={`./images/${comic.comic.name}.jpg`} width="30%" />
+            <img className="comic_image" src={`./images/${favoriteComic.comic.name}.jpg`} width="30%" />
             <div className="comic_content">
                 <h3>
                     <span className="card_comicname">
-                        {comic.comic.name}
+                        {favoriteComic.comic.name}
                     </span>
                 </h3>
-                <p>Date Issued: {comic.comic.dateIssued}</p>
-                <p>Story Synopsis: {comic.comic.description}</p>
-                <button type="button" className="button" onClick={""}>
-                    Add Comment
-                </button>
-                <button type="button" className="button" onClick={""}>
-                    Edit Comment
-                </button>
-                <button type="button" className="button" onClick={""}>
-                    Delete Comment
-                </button>
-                <button type="button" className="button" onClick={() => handleDeleteFavoriteComic(comic.id)}>
+                <p>Date Issued: {favoriteComic.comic.dateIssued}</p>
+                <p>Story Synopsis: {favoriteComic.comic.description}</p>
+                <p>Comments: {favoriteComic.comments}</p>
+
+
+                {
+                    favoriteComic.comments === "" ? (
+                        <>
+                            <button type="button" className="button" onClick={() => navigate(`/favorites/${favoriteComic.id}/createcomment`)}>
+                                Add Comment
+                            </button>
+                        </>
+                    ) : (
+                        <>
+                            <button type="button" className="button" onClick={() => navigate(`/favorites/${favoriteComic.id}/editcomment`)}>
+                                Edit Comment
+                            </button>
+                            <button type="button" className="button" onClick={""}>
+                                Delete Comment
+                            </button>
+                        </>
+                    )
+                }
+                <button type="button" className="button" onClick={() => handleDeleteFavoriteComic(favoriteComic.id)}>
                     Delete Comic
                 </button>
             </div>
         </div>
     )
 }
+
+

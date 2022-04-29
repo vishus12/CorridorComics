@@ -5,7 +5,7 @@ import { addFavoriteComics } from "../modules/FavoriteManager"
 export const ComicCard = ({ comic, getLoggedInUser }) => {
     const userId = JSON.parse(getLoggedInUser())
     const [favorite, setFavorite] = useState({
-        userId: userId,
+        userId: 0,
         comicId: "",
         comments: ""
     })
@@ -13,7 +13,7 @@ export const ComicCard = ({ comic, getLoggedInUser }) => {
     const handleFavoriteComic = () => {
 
         let comicObject = {
-            userId: userId.id,
+            userId: userId,
             comicId: comic.id,
             comments: ""
         }

@@ -7,15 +7,16 @@ import { getFavoriteComic, deleteFavoriteComic } from '../modules/FavoriteManage
 export const FavoriteComicListComponent = ({getLoggedInUser}) => {
     const [favoriteComics, setFavoriteComics] = useState([])
     const navigate = useNavigate();
+    const currentUser = getLoggedInUser()
 
     const handleDeleteFavoriteComic = (id) => {
         deleteFavoriteComic(id)
-        .then(() => getFavoriteComic().then(setFavoriteComics))
+        .then(() => getAllFavoriteComics(currentUser).then(result => (setFavoriteComics(result))))
     }
 
 
-    const getAllFavoriteComics = () => {
-        getFavoriteComic()
+    const getAllFavoriteComics = (userId) => {
+        getFavoriteComic(userId)
         .then(response => {
             setFavoriteComics(response)
             
@@ -23,16 +24,16 @@ export const FavoriteComicListComponent = ({getLoggedInUser}) => {
     }
     
     useEffect(() => {
-        getAllFavoriteComics()
+        getAllFavoriteComics(currentUser)
     }, [])
     
 
     return (
         <>
             <div className="container-cards">
-                {favoriteComics.map(favoriteComics => <FavoritesCard
-                    key={favoriteComics.id}
-                    comic={favoriteComics}
+                {favoriteComics.map(favoriteComic => <FavoritesCard
+                    key={favoriteComic.id}
+                    favoriteComic={favoriteComic}
                     getLoggedInUser={getLoggedInUser}
                     handleDeleteFavoriteComic={handleDeleteFavoriteComic}
                    />)}
