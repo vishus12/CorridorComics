@@ -3,13 +3,10 @@ import "./ComicCard.css"
 import { addFavoriteComics } from "../modules/FavoriteManager"
 
 export const ComicCard = ({ comic, getLoggedInUser }) => {
+    //storing logged in user in userID
     const userId = JSON.parse(getLoggedInUser())
-    const [favorite, setFavorite] = useState({
-        userId: 0,
-        comicId: "",
-        comments: ""
-    })
-
+   
+    //function that creates an object with properties
     const handleFavoriteComic = () => {
 
         let comicObject = {
@@ -17,9 +14,11 @@ export const ComicCard = ({ comic, getLoggedInUser }) => {
             comicId: comic.id,
             comments: ""
         }
+        // this passes the comicObject to the fetch function
         addFavoriteComics(comicObject)
+        //thus saving the favorite comic
     }
-
+// this is what renders to the dom
     return (
 
         <div className="comic_container">

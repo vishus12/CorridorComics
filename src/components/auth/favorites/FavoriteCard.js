@@ -1,13 +1,17 @@
 import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-
+import { updateFavoriteComic } from '../modules/FavoriteManager';
 
 
 export const FavoritesCard = ({ favoriteComic, handleDeleteFavoriteComic }) => {
     const navigate = useNavigate();
-
+ const [comic, comicUpdate] = useState(false)
+ 
  const handleDeleteComment = () =>{
-     
+     const deleteComment = {...favoriteComic}
+     deleteComment.comments = ""
+     updateFavoriteComic(deleteComment)
+     .then(navigate("/favorites"))
 
  }   
     return (
@@ -37,7 +41,7 @@ export const FavoritesCard = ({ favoriteComic, handleDeleteFavoriteComic }) => {
                             <button type="button" className="button" onClick={() => navigate(`/favorites/${favoriteComic.id}/editcomment`)}>
                                 Edit Comment
                             </button>
-                            <button type="button" className="button" onClick={""}>
+                            <button type="button" className="button" onClick={handleDeleteComment}>
                                 Delete Comment
                             </button>
                         </>
