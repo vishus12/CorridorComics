@@ -5,15 +5,22 @@ import { updateFavoriteComic } from '../modules/FavoriteManager';
 
 export const FavoritesCard = ({ favoriteComic, handleDeleteFavoriteComic }) => {
     const navigate = useNavigate();
- const [comic, comicUpdate] = useState(false)
- 
- const handleDeleteComment = () =>{
-     const deleteComment = {...favoriteComic}
-     deleteComment.comments = ""
-     updateFavoriteComic(deleteComment)
-     .then(navigate("/favorites"))
+    const [comic, comicUpdate] = useState(false)
 
- }   
+    const handleDeleteComment = async () => {
+        const deleteComment = {
+            userId: favoriteComic.userId,
+            comicId: favoriteComic.comicId,
+            comments: "",
+            id: favoriteComic.id
+
+
+        }
+        comicUpdate(deleteComment)
+       await updateFavoriteComic(deleteComment)
+            .then(() => window.location.reload())
+
+    }
     return (
 
         <div className="comic_container">
