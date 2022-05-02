@@ -3,10 +3,13 @@ import { ComicCard } from './ComicCard'
 import { getComics } from '../modules/ComicManager.js'
 import { useNavigate } from 'react-router-dom'
 
-export const ComicListComponent = ({getLoggedInUser}) => {
-    const [comics, setComics] = useState([])
-    // const navigate = useNavigate();
 
+export const ComicListComponent = ({getLoggedInUser}) => {
+    //creating useState setting comics to an empty array
+    const [comics, setComics] = useState([])
+
+
+//getting all the comics from fetch and parsing the comics from database
     const getAllComics = () => {
         getComics()
         .then(response => {
@@ -14,12 +17,12 @@ export const ComicListComponent = ({getLoggedInUser}) => {
             
         })
     }
-    
+// its calling the getAllComics from above when page is loaded
     useEffect(() => {
         getAllComics()
     }, [])
     
-
+//Mapping individual comics to the commic card 
     return (
         <>
             <div className="container-cards">
@@ -27,6 +30,8 @@ export const ComicListComponent = ({getLoggedInUser}) => {
                     key={i.id}
                     comic={i}
                     getLoggedInUser={getLoggedInUser}
+                    //passing comic and getLoggedInUser to comic card
+                    // key being a component react needs 
                    />)}
             </div>
         </>

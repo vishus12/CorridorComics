@@ -37,3 +37,4 @@ export const getFavoriteComicsById = (favoritesId) =>{
         
     }).then(parseResponse => parseResponse.json())
 }
+
