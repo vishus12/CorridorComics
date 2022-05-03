@@ -17,12 +17,12 @@ export const ComicListComponent = ({getLoggedInUser}) => {
             
         })
     }
-// its calling the getAllComics from above when page is loaded
+// getAllComics is invoked when page is loaded
     useEffect(() => {
         getAllComics()
     }, [])
     
-//Mapping individual comics to the commic card 
+//Mapping individual comics to the comic card 
     return (
         <>
             <div className="container-cards">
