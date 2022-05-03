@@ -1,26 +1,15 @@
 import React, { useState, useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { updateFavoriteComic } from '../modules/FavoriteManager';
+import { getFavoriteComic } from '../modules/FavoriteManager';
 
 
-export const FavoritesCard = ({ favoriteComic, handleDeleteFavoriteComic }) => {
+export const FavoritesCard = ({ favoriteComic, handleDeleteFavoriteComic, handleDeleteComment }) => {
+    // prop objects passed through favorites card which triger on click events
     const navigate = useNavigate();
-    const [comic, comicUpdate] = useState(false)
-
-    const handleDeleteComment = async () => {
-        const deleteComment = {
-            userId: favoriteComic.userId,
-            comicId: favoriteComic.comicId,
-            comments: "",
-            id: favoriteComic.id
 
 
-        }
-        comicUpdate(deleteComment)
-       await updateFavoriteComic(deleteComment)
-            .then(() => window.location.reload())
-
-    }
+    //return with a terinary that hides the add button once a comment has been added
     return (
 
         <div className="comic_container">
@@ -48,7 +37,7 @@ export const FavoritesCard = ({ favoriteComic, handleDeleteFavoriteComic }) => {
                             <button type="button" className="button" onClick={() => navigate(`/favorites/${favoriteComic.id}/editcomment`)}>
                                 Edit Comment
                             </button>
-                            <button type="button" className="button" onClick={handleDeleteComment}>
+                            <button type="button" className="button" onClick={() => handleDeleteComment(favoriteComic)}>
                                 Delete Comment
                             </button>
                         </>
@@ -61,5 +50,6 @@ export const FavoritesCard = ({ favoriteComic, handleDeleteFavoriteComic }) => {
         </div>
     )
 }
+// handleDeleteFavoriteComic invoked on click of delete comic button
 
 

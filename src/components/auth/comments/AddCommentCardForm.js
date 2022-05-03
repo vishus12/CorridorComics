@@ -6,7 +6,9 @@ import { updateFavoriteComic, getFavoriteComicsById  } from '../modules/Favorite
 export const AddCommentToPageCard = ({ getLoggedInUser }) => {
     const [comics, setComics] = useState({})
     const {favoriteId} = useParams()
+    // to grab the id from the dom
     const navigate = useNavigate();
+    //to navigate to specific page
 
     const controlInput = (event) => {
         const newComics = { ...comics }
@@ -18,16 +20,16 @@ export const AddCommentToPageCard = ({ getLoggedInUser }) => {
         // storing event.target.value to selectedTarget
 
         newComics[event.target.id] = selectedTarget
-        // square bracket object notation
+        // storing selectedTarget to newComics square bracket object notation
         setComics(newComics)
-        //setting the usedState equal to the updated object
+        //setting the usedState equal to the updated object of comics
     }
 
-    // 1. setting useState to the comic thats returned by the fetch call
+   
     useEffect(() => {
         getFavoriteComicsById(favoriteId)
         .then(fav => setComics(fav)) 
-
+        // 1. setting useState to the comic thats returned by the fetch call
     }, [])
 
 
@@ -36,7 +38,7 @@ export const AddCommentToPageCard = ({ getLoggedInUser }) => {
         updateFavoriteComic(comics)
             .then(() => navigate('/Favorites'))
     }
-    // Save comics passing the state to updateFavoriteComic then navigating to favorites
+    // Save comics is passing the comics state to updateFavoriteComic then navigating to favorites
 
     return (
 

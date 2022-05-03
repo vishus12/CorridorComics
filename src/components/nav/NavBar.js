@@ -2,7 +2,7 @@ import React from "react"
 import { Link } from "react-router-dom"
 import "./NavBar.css"
 
-export const NavBar = (clearUser) => {
+export const NavBar = ({clearUser}) => {
   return (
     <nav>
     <ul className="navBar">
