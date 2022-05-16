@@ -2,11 +2,11 @@
 
 # Corridor Comics
 
-This application is for comic nerds to explor different comics from a database and favorite the ones that catch their eye
+This application is for comic nerds to explore different comics from a database and favorite the ones that catch their eye
 
 
 # Usage
-The application is helpful in keeping up to date on the comics they should read next or the comics they would want to stray away from. Users are able to add, edit, and remove reviews to their favorited comic.
+The application is helpful in keeping up to date on the comics they should read next or the comics they would want to stray away from. Users are able to add, edit, and remove reviews to their favorite comic.
 
 ## Setup: Follow these steps exactly
 
@@ -24,9 +24,6 @@ The application is helpful in keeping up to date on the comics they should read 
 This application is a Vishal Trivedi production if you need help finding information or wanting to get a specific database email me at vishaltrivedi92@gmail.com 
 
 # ERD
-
-## Screenshots
-
 ![App Screenshot](https://i.ibb.co/GCDk66T/draw-SQL-export-2022-04-22-12-43.png)
 
 
