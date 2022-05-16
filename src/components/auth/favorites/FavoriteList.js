@@ -20,7 +20,7 @@ export const FavoriteComicListComponent = ({ getLoggedInUser }) => {
     const handleDeleteFavoriteComic = (id) => {
         deleteFavoriteComic(id)
             .then(() => getAllFavoriteComics(currentUser).then(result => (setFavoriteComics(result))))
-        // handleDeleteFavoriteComic takes id of comic passes through delete fetch deleting comic and reloads the setFavoriteComics state
+        // handleDeleteFavoriteComic takes id of comic passes through delete fetch deleting comic and reloading the setFavoriteComics state
     }
 
     const handleDeleteComment = (favoriteComic) => {

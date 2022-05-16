@@ -10,19 +10,22 @@ export const AddCommentToPageCard = ({ getLoggedInUser }) => {
     const navigate = useNavigate();
     //to navigate to specific page
 
+//copy of useState. updating that copy with new information from the user. setting that useState to that copy. 
     const controlInput = (event) => {
         const newComics = { ...comics }
+        //3. copy of comics
 
         newComics.userId = getLoggedInUser()
-        //3. setting the id in newComics to the logged in user
+        //setting the id in newComics to the logged in user
 
         let selectedTarget = event.target.value
-        // storing event.target.value to selectedTarget
+        // storing the input field 
 
         newComics[event.target.id] = selectedTarget
-        // storing selectedTarget to newComics square bracket object notation
+        // storing whats typed in the input field 
+
         setComics(newComics)
-        //setting the usedState equal to the updated object of comics
+        //setting comics to updated object
     }
 
    
